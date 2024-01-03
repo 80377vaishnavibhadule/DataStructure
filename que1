@@ -1,0 +1,63 @@
+1. Palindrome Check Approaches:
+
+
+Iterative Approach:-----------------------------
+
+Time Complexity: O(n) where n is the length of the string.
+Space Complexity: O(1).
+
+-------------------------------------------------------------------
+public boolean isPalindromeIterative(String s) {
+    int left = 0;
+    int right = s.length() - 1;
+
+    while (left < right) {
+        if (s.charAt(left) != s.charAt(right)) {
+            return false;
+        }
+        left++;
+        right--;
+    }
+    return true;
+}
+
+Recursive Approach:--------------------
+
+Time Complexity: O(n) where n is the length of the string (assuming the recursive call stack space is not considered).
+Space Complexity: O(n) due to the recursive call stack
+-------------------------------------------------------------------
+
+public boolean isPalindromeRecursive(String s) {
+    return isPalindromeRecursiveHelper(s, 0, s.length() - 1);
+}
+
+private boolean isPalindromeRecursiveHelper(String s, int left, int right) {
+    if (left >= right) {
+        return true;
+    }
+
+    if (s.charAt(left) != s.charAt(right)) {
+        return false;
+    }
+
+    return isPalindromeRecursiveHelper(s, left + 1, right - 1);
+}
+
+
+StringBuilder and StringBuffer Approach:-----------
+
+Time Complexity: O(n) where n is the length of the string.
+Space Complexity: O(n) for creating the reversed string.
+
+--------------------------------------------------------------------------
+public boolean isPalindromeStringBuilder(String s) {
+    StringBuilder reversed = new StringBuilder(s).reverse();
+    return s.equals(reversed.toString());
+}
+
+
+public boolean isPalindromeStringBuffer(String s) {
+    StringBuffer reversed = new StringBuffer(s).reverse();
+    return s.equals(reversed.toString());
+}
+
